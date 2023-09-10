@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+  <meta charset="utf-8">
+    <title>send-your-voice</title>
+    <style>
+      body { padding: 0px; margin: 0px; }
+      .video-box { width: 100%; height: 100%; overflow: hidden;margin: 0px auto; position: relative; }
+      video { width: 100%; }
+      .button-box {
+        text-align: right;
+        opacity: 0;
+        transition: opacity 0.5s;
+        position: relative;
+        top: -150px;
+        right: 50px;
+      }
+      button { 
+        display: inline-block;
+        width: 62px; 
+        height: 92px; 
+        background-image: url("../image/next.png");
+        background-color: transparent;
+        border: none;
+      }
+    </style>
+  </head>
+  <body id="content">
+    <div class="video-box">
+      <video muted autoplay playsinline id="video_04">
+        <source src="../videos/04.webm" type="video/webm">
+        <source src="../videos/04.mp4" type="video/mp4">
+        <strong>Your browser does not support the video tag.</strong>
+      </video>
+      <div class="button-box">
+        <button></button>
+      </div>
+    </div>
+    <script>
+      let box; 
+      document.addEventListener('DOMContentLoaded', ()=>{
+        box = document.querySelector('#content');
+        box.addEventListener('click', chooseSide);
+        });
+
+      function chooseSide(e){
+        const {clientX, clientY} = e;
+        const {clientHeight, clientWidth} = box
+        if(clientX < (clientWidth/ 2)){
+          location.replace('03.html')
+        } else{
+          location.replace('05.html')
+        }
+      }
+
+      setTimeout(function() {
+          var buttonBox = document.querySelector(".button-box");
+          buttonBox.style.opacity = "1";
+        }, 4000);
+    </script>
+  </body>
+</html>

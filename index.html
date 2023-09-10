@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>send-your-voice</title>
+	<style>
+		body {
+			text-align: center;
+			background-image: url('image/01_back_1080x1920.png');
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0;
+		}
+		.button-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.button-story,
+		.button-ar {
+			background-color: transparent;
+			border: none;
+			margin-bottom: 20px;
+		}
+		.button-story {
+			background-image: url('image/01_button_A.png');
+			margin-top: 400px;
+			width: 634px;
+			height: 532px;
+		}
+		.button-ar {
+			background-image: url('image/01_button_B.png');
+			width: 754px;
+			height: 619px;
+		}
+	</style>
+</head>
+<body>
+	<div class="button-container">
+		<button class="button-story" onclick="location.replace('html/02.html')"></button>
+		<button class="button-ar" onclick="location.replace('https://naver.com')"></button>
+	</div>
+</body>
+</html>

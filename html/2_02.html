@@ -27,6 +27,7 @@
       <source src="../audio/RR3_02sound.mp3" type="audio/mp3">
       Your browser does not support the audio element.
     </audio>
+    <audio id="btn_audio" src="../audio/Btn_RR.mp3"></audio>
     <div class="video-box">
       <video muted autoplay playsinline id="video_2_02">
         <source src="../videos/S3_Mobile_2.webm" type="video/webm">
@@ -34,8 +35,19 @@
         <strong>Your browser does not support the video tag.</strong>
       </video>
       <div class="button-box">
-        <button onClick="location.replace('2_03.html')"></button>
+        <button id="btn"></button>
       </div>
     </div>
   </body>
+  <script>
+        var btn = document.getElementById("btn");
+        var audio = document.getElementById("btn_audio");
+
+        btn.addEventListener("click", function() {
+          audio.play();
+          setTimeout(function() {
+            location.replace('2_03.html')
+          }, 1000);
+        });
+  </script>
 </html>

@@ -51,9 +51,31 @@
 		<source src="audio/Paper_Planes_-_Ocean_Avenue.wav" type="audio/wav">
 		Your browser does not support the audio element.
 	</audio>
+	<audio id="audio_story" src="audio/Btn_RR.mp3"></audio>
+	<audio id="audio_ar" src="audio/Btn_mermaid.mp3"></audio>
 	<div class="button-container">
-		<button class="button-story" onclick="location.replace('html/02.html')"></button>
-		<button class="button-ar" onclick="location.replace('https://naver.com')"></button>
+		<button class="button-story" id="button-story"></button>
+		<button class="button-ar" id="button-ar"></button>
 	</div>
 </body>
+<script>
+	var btn_story = document.getElementById("button-story");
+	var btn_ar = document.getElementById("button-ar");
+	var audio_story = document.getElementById("audio_story");
+	var audio_ar = document.getElementById("audio_ar");
+
+	btn_story.addEventListener("click", function() {
+		audio_story.play();
+	  	setTimeout(function() {
+			location.replace('html/02.html')
+	  	}, 1000);
+	});
+
+	btn_ar.addEventListener("click", function() {
+		audio_ar.play();
+	  	setTimeout(function() {
+			location.replace('https://naver.com')
+	  	}, 1000);
+	});
+</script>
 </html>

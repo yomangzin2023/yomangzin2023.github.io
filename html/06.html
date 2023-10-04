@@ -26,6 +26,7 @@
     </style>
   </head>
   <body id="content">
+    <audio id="audio" src="../audio/Btn_Click.mp3"></audio>
     <div class="video-box">
       <video autoplay playsinline id="video_06">
         <source src="../videos/06.webm" type="video/webm">
@@ -44,13 +45,18 @@
         });
 
       function chooseSide(e){
-        const {clientX, clientY} = e;
-        const {clientHeight, clientWidth} = box
-        if(clientX < (clientWidth/ 2)){
-          location.replace('05.html')
-        } else{
-          location.replace('07.html')
-        }
+        var audio = document.getElementById("audio");
+        audio.play();
+
+        setTimeout(function() {
+          const {clientX, clientY} = e;
+          const {clientHeight, clientWidth} = box
+          if(clientX < (clientWidth/ 2)){
+            location.replace('05.html')
+          } else{
+            location.replace('07.html')
+          }
+        }, 500)
       }
 
       setTimeout(function() {

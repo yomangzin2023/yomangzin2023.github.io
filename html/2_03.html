@@ -25,11 +25,6 @@
 			flex-direction: column;
 			align-items: center;
         }
-		img {
-			width: 400px;
-			height: 400px;
-			margin-top: 600px;
-		}
         .button-story,
 		.button-text {
 			background-color: transparent;
@@ -38,7 +33,7 @@
 		}
         .button-story { 
             background-image: url("../image/mobile_3_button.png");
-			margin-top: 500px;
+			margin-top: 1500px;
 			width: 493px;
 			height: 206px;
         }
@@ -52,22 +47,8 @@
 </head>
 <body>
 	<div class="button-box">
-		<img id="random-image"/>
-		<button class="button-story" onclick="location.replace('https://naver.com')"></button>
+		<button class="button-story" onclick="location.replace('https://pf.kakao.com/_kyyMG')"></button>
         <button class="button-text"></button>
 	</div>
-	<script>
-		const image_array = [
-  			'1.png',
-  			'2.png',
-  			'3.png'
-		];
-
-		window.onload = function get_random_image() {
-  			const random_index = Math.floor(Math.random() * image_array.length);
-  			const selected_image = image_array[random_index];
-  			document.getElementById('random-image').src = `../random-image/${selected_image}`;
-		}
-	</script>
 </body>
 </html>

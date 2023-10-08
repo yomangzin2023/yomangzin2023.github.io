@@ -69,11 +69,14 @@
       audioBtn.addEventListener('click', () => {
         if (audio.paused) {
           audio.play();
-          audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
         } else {
           audio.pause();
           audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
         }
+      });
+
+      audio.addEventListener('play', () => {
+        audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
       });
     });
 

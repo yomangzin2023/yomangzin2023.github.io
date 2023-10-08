@@ -14,12 +14,12 @@
         transform: translateX(-50%);
         width: 90px; 
         height: 90px; 
-        background: no-repeat center center;
+        background: url("../image/sound_off.png") no-repeat center center;
         background-size: 200%;
         background-color: transparent;
         border: none;
       }
-      .button-box {
+      .next-button-box {
         text-align: right;
         opacity: 0;
         transition: opacity 0.5s;
@@ -45,7 +45,7 @@
         <source src="../videos/s3_Mobile_1.mp4" type="video/mp4">
         <strong>Your browser does not support the video tag.</strong>
       </video>
-      <div class="button-box">
+      <div class="next-button-box">
         <button id="next_btn"></button>
       </div>
     </div>
@@ -59,12 +59,6 @@
         video = document.querySelector('#video_2_01');
         const audioBtn = document.querySelector('#audio_btn');
 
-        if (video.muted) {
-          audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
-        } else {
-          audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
-        }
-
         audioBtn.addEventListener('click', () => {
           if (video.muted) {
             video.muted = false;
@@ -76,6 +70,14 @@
           } else {
             video.muted = true;
             audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
+          }
+        });
+
+        video.addEventListener('play', () => {
+          if (video.muted) {
+            audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
+          } else {
+            audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
           }
         });
 
@@ -104,7 +106,7 @@
       }
 
       setTimeout(function() {
-          var buttonBox = document.querySelector(".button-box");
+          var buttonBox = document.querySelector(".next-button-box");
           buttonBox.style.opacity = "1";
         }, 4000);
     </script>

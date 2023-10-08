@@ -7,24 +7,24 @@
       body { padding: 0px; margin: 0px; padding-bottom: 200px;}
       .video-box { width: 100%; height: 100%; overflow: hidden;margin: 0px auto; position: relative; }
       video { width: 100%; }
-      #audio_btn {
+      #background_audio_btn {
         position: absolute;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
         width: 90px; 
         height: 90px; 
-        background: no-repeat center center;
+        background: url("../image/sound_off.png") no-repeat center center;
         background-size: 200%;
         background-color: transparent;
         border: none;
       }
-      .button-box {
+      .next-button-box {
         text-align: center;
         position: relative;
         top: -300px;
       }
-      button { 
+      #next_btn { 
         display: inline-block;
         width: 519px; 
         height: 207px; 
@@ -35,53 +35,50 @@
     </style>
   </head>
   <body id="content">
-    <audio id="audio" autoplay loop>
+    <audio id="background_audio" autoplay loop>
       <source src="../audio/RR3_02sound.mp3" type="audio/mp3">
       Your browser does not support the audio element.
     </audio>
-    <audio id="btn_audio" src="../audio/Btn_RR.mp3"></audio>
+    <audio id="next_btn_audio" src="../audio/Btn_RR.mp3"></audio>
     <div class="video-box">
       <video muted autoplay playsinline id="video_2_02">
         <source src="../videos/S3_Mobile_2.webm" type="video/webm">
         <source src="../videos/S3_Mobile_2.mp4" type="video/mp4">
         <strong>Your browser does not support the video tag.</strong>
       </video>
-      <div class="button-box">
-        <button id="btn"></button>
+      <div class="next-button-box">
+        <button id="next_btn"></button>
       </div>
     </div>
-    <button id="audio_btn"></button>
+    <button id="background_audio_btn"></button>
   </body>
   <script>
-    var btn = document.getElementById("btn");
-    var btnAudio = document.getElementById("btn_audio");
-    var audio = document.getElementById("audio");
+    var nextBtn = document.getElementById("next_btn");
+    var nextBtnAudio = document.getElementById("next_btn_audio");
+    var backgroundAudio = document.getElementById("background_audio");
 
     document.addEventListener('DOMContentLoaded', ()=>{
-      const audioBtn = document.querySelector('#audio_btn');
+      const backgroundAudioBtn = document.querySelector('#background_audio_btn');
 
-      if (audio.paused) {
-        audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
-      } else {
-        audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
-      }
-
-      audioBtn.addEventListener('click', () => {
-        if (audio.paused) {
-          audio.play();
+      backgroundAudioBtn.addEventListener('click', () => {
+        if (backgroundAudio.paused) {
+          backgroundAudio.play();
         } else {
-          audio.pause();
-          audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
+          backgroundAudio.pause();
         }
       });
 
-      audio.addEventListener('play', () => {
-        audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
+      backgroundAudio.addEventListener('play', () => {
+        backgroundAudioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
+      });
+
+      backgroundAudio.addEventListener('pause', () => {
+        backgroundAudioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
       });
     });
 
-    btn.addEventListener("click", function() {
-      btnAudio.play();
+    nextBtn.addEventListener("click", function() {
+      nextBtnAudio.play();
       setTimeout(function() {
         location.replace('2_03.html')
       }, 1000);

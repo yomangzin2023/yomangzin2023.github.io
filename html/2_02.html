@@ -7,6 +7,18 @@
       body { padding: 0px; margin: 0px; padding-bottom: 200px;}
       .video-box { width: 100%; height: 100%; overflow: hidden;margin: 0px auto; position: relative; }
       video { width: 100%; }
+      #audio_btn {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90px; 
+        height: 90px; 
+        background: url("../image/sound_off.png") no-repeat center center;
+        background-size: 200%;
+        background-color: transparent;
+        border: none;
+      }
       .button-box {
         text-align: center;
         position: relative;
@@ -23,7 +35,7 @@
     </style>
   </head>
   <body id="content">
-    <audio id="audio" autoplay loop controls>
+    <audio id="audio" autoplay loop>
       <source src="../audio/RR3_02sound.mp3" type="audio/mp3">
       Your browser does not support the audio element.
     </audio>
@@ -38,16 +50,38 @@
         <button id="btn"></button>
       </div>
     </div>
+    <button id="audio_btn"></button>
   </body>
   <script>
-        var btn = document.getElementById("btn");
-        var audio = document.getElementById("btn_audio");
+    var btn = document.getElementById("btn");
+    var btnAudio = document.getElementById("btn_audio");
+    var audio = document.getElementById("audio");
 
-        btn.addEventListener("click", function() {
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const audioBtn = document.querySelector('#audio_btn');
+
+      if (audio.paused) {
+        audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
+      } else {
+        audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
+      }
+
+      audioBtn.addEventListener('click', () => {
+        if (audio.paused) {
           audio.play();
-          setTimeout(function() {
-            location.replace('2_03.html')
-          }, 1000);
-        });
+          audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
+        } else {
+          audio.pause();
+          audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
+        }
+      });
+    });
+
+    btn.addEventListener("click", function() {
+      btnAudio.play();
+      setTimeout(function() {
+        location.replace('2_03.html')
+      }, 1000);
+    });
   </script>
 </html>

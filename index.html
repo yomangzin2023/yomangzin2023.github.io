@@ -12,6 +12,18 @@
 			margin: 0;
 			padding-bottom: 200px;
 		}
+		#background_audio_btn {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 90px; 
+			height: 90px; 
+			background: url("image/sound_off.png") no-repeat center center;
+			background-size: 200%;
+			background-color: transparent;
+			border: none;
+		}
 		.button-container {
 			display: flex;
 			justify-content: center;
@@ -47,7 +59,8 @@
 	</style>
 </head>
 <body>
-	<audio id="audio" autoplay loop controls>
+	<button id="background_audio_btn"></button>
+	<audio id="background_audio" autoplay loop>
 		<source src="audio/Paper_Planes_-_Ocean_Avenue.wav" type="audio/wav">
 		Your browser does not support the audio element.
 	</audio>
@@ -63,6 +76,7 @@
 	var btn_ar = document.getElementById("button-ar");
 	var audio_story = document.getElementById("audio_story");
 	var audio_ar = document.getElementById("audio_ar");
+	var backgroundAudio = document.getElementById("background_audio");
 
 	btn_story.addEventListener("click", function() {
 		audio_story.play();
@@ -77,5 +91,25 @@
 			location.replace('https://naver.com')
 	  	}, 1000);
 	});
+
+	document.addEventListener('DOMContentLoaded', ()=>{
+      const backgroundAudioBtn = document.querySelector('#background_audio_btn');
+
+      backgroundAudioBtn.addEventListener('click', () => {
+        if (backgroundAudio.paused) {
+          backgroundAudio.play();
+        } else {
+          backgroundAudio.pause();
+        }
+      });
+
+      backgroundAudio.addEventListener('play', () => {
+        backgroundAudioBtn.style.backgroundImage = 'url("image/sound_ing.png")';
+      });
+
+      backgroundAudio.addEventListener('pause', () => {
+        backgroundAudioBtn.style.backgroundImage = 'url("image/sound_off.png")';
+      });
+    });
 </script>
 </html>

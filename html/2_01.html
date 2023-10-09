@@ -40,7 +40,7 @@
   <body id="content">
     <audio id="audio" src="../audio/Btn_Click.mp3"></audio>
     <div class="video-box">
-      <video muted autoplay playsinline id="video_2_01">
+      <video autoplay playsinline id="video_2_01">
         <source src="../videos/s3_Mobile_1.webm" type="video/webm">
         <source src="../videos/s3_Mobile_1.mp4" type="video/mp4">
         <strong>Your browser does not support the video tag.</strong>
@@ -90,6 +90,12 @@
         });
 
         box.addEventListener('click', chooseSide);
+
+        if (!video.playing) {
+          video.muted = true;
+          video.play();
+        }
+
       });
 
       function chooseSide(e){

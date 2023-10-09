@@ -56,9 +56,11 @@
     var nextBtn = document.getElementById("next_btn");
     var nextBtnAudio = document.getElementById("next_btn_audio");
     var backgroundAudio = document.getElementById("background_audio");
+    let video;
 
     document.addEventListener('DOMContentLoaded', ()=>{
       const backgroundAudioBtn = document.querySelector('#background_audio_btn');
+      video = document.querySelector('#video_2_02');
 
       backgroundAudioBtn.addEventListener('click', () => {
         if (backgroundAudio.paused) {
@@ -75,6 +77,12 @@
       backgroundAudio.addEventListener('pause', () => {
         backgroundAudioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
       });
+
+      if (!video.playing) {
+          video.muted = true;
+          video.play();
+      }
+
     });
 
     nextBtn.addEventListener("click", function() {

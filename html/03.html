@@ -84,11 +84,6 @@
             audioBtn.style.backgroundImage = 'url("../image/sound_on.png")';
           }
         });
-
-        if (!video.playing) {
-          video.muted = true;
-          video.play();
-        }
         
       });
 
@@ -96,6 +91,13 @@
         var buttonBox = document.querySelector(".button-box");
         buttonBox.style.opacity = "1";
       }, 4000);
+
+      setTimeout(function() {
+        if (!video.playing) {
+          video.muted = true;
+          video.play();
+        }
+      }, 500);
     </script>
   </body>
 </html>

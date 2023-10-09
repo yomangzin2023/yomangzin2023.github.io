@@ -91,11 +91,6 @@
 
         box.addEventListener('click', chooseSide);
 
-        if (!video.playing) {
-          video.muted = true;
-          video.play();
-        }
-
       });
 
       function chooseSide(e){
@@ -115,6 +110,13 @@
           var buttonBox = document.querySelector(".next-button-box");
           buttonBox.style.opacity = "1";
         }, 4000);
+
+      setTimeout(function() {
+        if (!video.playing) {
+          video.muted = true;
+          video.play();
+        }
+      }, 500);
     </script>
   </body>
 </html>

@@ -78,11 +78,6 @@
         backgroundAudioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
       });
 
-      if (!video.playing) {
-          video.muted = true;
-          video.play();
-      }
-
     });
 
     nextBtn.addEventListener("click", function() {
@@ -91,5 +86,12 @@
         location.replace('2_03.html')
       }, 1000);
     });
+
+    setTimeout(function() {
+      if (!video.playing) {
+        video.muted = true;
+        video.play();
+      }
+    }, 500);
   </script>
 </html>

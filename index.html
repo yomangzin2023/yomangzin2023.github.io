@@ -81,6 +81,8 @@
 	</div>
 </body>
 <script>
+	gtag('event', 'content_one', {'event_name' : 'content_one'});
+
 	var btn_story = document.getElementById("button-story");
 	var btn_ar = document.getElementById("button-ar");
 	var audio_story = document.getElementById("audio_story");
@@ -88,6 +90,7 @@
 	var backgroundAudio = document.getElementById("background_audio");
 
 	btn_story.addEventListener("click", function() {
+		gtag('event', 'button_story', {'event_name' : 'button_story'});
 		audio_story.play();
 	  	setTimeout(function() {
 			location.replace('html/02.html')
@@ -95,6 +98,7 @@
 	});
 
 	btn_ar.addEventListener("click", function() {
+		gtag('event', 'button_rr', {'event_name' : 'button_rr'});
 		audio_ar.play();
 	  	setTimeout(function() {
 			location.replace('https://naver.com')

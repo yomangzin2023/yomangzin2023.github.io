@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="ko">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X98JNLY609"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-X98JNLY609');
+    </script>
   <meta charset="utf-8">
     <title>send-your-voice</title>
     <style>
@@ -12,8 +21,8 @@
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 90px; 
-        height: 90px; 
+        width: 135px; 
+        height: 135px; 
         background: url("../image/sound_off.png") no-repeat center center;
         background-size: 200%;
         background-color: transparent;
@@ -22,7 +31,7 @@
       .button-box {
         text-align: center;
         opacity: 0;
-        transition: opacity 0.5s;
+        transition: opacity 0.5s 68s;
         position: relative;
         top: -300px;
       }
@@ -30,72 +39,86 @@
         display: inline-block;
         width: 648px; 
         height: 198px; 
-        background-image: url("../image/03_button.png");
+        background-image: url("../image/14_button.png");
         background-color: transparent;
         border: none;
       }
     </style>
   </head>
   <body id="content">
+    <audio id="audio" autoplay>
+      <source src="../audio/Btn_mermaid.mp3" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
     <div class="video-box">
-      <video playsinline id="video_03">
+      <video playsinline id="video_14">
         <source src="../videos/03.webm" type="video/webm">
-        <source src="../videos/03.mp4" type="video/mp4">
         <strong>Your browser does not support the video tag.</strong>
       </video>
-    </div>
-    <div class="button-box">
-      <button onClick="location.replace('04.html')"></button>
-    </div>
-    <button id="audio_btn"></button>
-    <script>
-      let video;
+      <div class="button-box">
+        <button onClick="clickButton()"></button>
+      </div>
+      <button id="audio_btn"></button>
+      <script>
+        var audio = document.getElementById("audio");
+        let video;
 
-      document.addEventListener('DOMContentLoaded', ()=>{
-        video = document.querySelector('#video_03');
-        const audioBtn = document.querySelector('#audio_btn');
-        
-        audioBtn.addEventListener('click', () => {
-          if (video.muted) {
-            video.muted = false;
-            if (video.paused || video.ended) {
-              audioBtn.style.backgroundImage = 'url("../image/sound_on.png")';
+        document.addEventListener('DOMContentLoaded', ()=>{
+          const audioBtn = document.querySelector('#audio_btn');
+          video = document.querySelector('#video_14');
+
+          audioBtn.addEventListener('click', () => {
+            if (video.muted) {
+              video.muted = false;
+              if (video.paused || video.ended) {
+                audioBtn.style.backgroundImage = 'url("../image/sound_on.png")';
+              } else {
+                audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
+              }
+            } else {
+              video.muted = true;
+              audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
+            }
+          });
+
+          video.addEventListener('play', () => {
+            if (video.muted) {
+              audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
             } else {
               audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
             }
-          } else {
+          });
+
+          video.addEventListener('pause', () => {
+            if (video.muted) {
+              audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
+            } else {
+              audioBtn.style.backgroundImage = 'url("../image/sound_on.png")';
+            }
+          });
+
+          video.play().catch (error => {
             video.muted = true;
-            audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
-          }
+            video.play();
+          })
+
         });
 
-        video.addEventListener('play', () => {
-          if (video.muted) {
-            audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
-          } else {
-            audioBtn.style.backgroundImage = 'url("../image/sound_ing.png")';
-          }
-        });
+        setTimeout(function() {
+          var buttonBox = document.querySelector(".button-box");
+          buttonBox.style.opacity = "1";
+        }, 4000);
 
-        video.addEventListener('pause', () => {
-          if (video.muted) {
-            audioBtn.style.backgroundImage = 'url("../image/sound_off.png")';
-          } else {
-            audioBtn.style.backgroundImage = 'url("../image/sound_on.png")';
-          }
-        });
+        function clickButton() {
+          gtag('event', 'button_ar', {'event_name' : 'content_ar'});
+          var audio = document.getElementById("audio");
+          audio.play();
 
-        video.play().catch (error => {
-          video.muted = true;
-          video.play();
-        })
-        
-      });
+          setTimeout(function() {
+            location.replace('https://flowcode.com/p/DQbDW8hUa');
+          }, 500)
+        }
 
-      setTimeout(function() {
-        var buttonBox = document.querySelector(".button-box");
-        buttonBox.style.opacity = "1";
-      }, 4000);
-    </script>
+      </script>
   </body>
 </html>

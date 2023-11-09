@@ -12,26 +12,25 @@
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 90px; 
-        height: 90px; 
+        width: 135px; 
+        height: 135px; 
         background: url("../image/sound_off.png") no-repeat center center;
         background-size: 200%;
         background-color: transparent;
         border: none;
       }
       .button-box {
-        text-align: right;
+        text-align: center;
         opacity: 0;
-        transition: opacity 0.5s;
+        transition: opacity 0.5s 8s;
         position: relative;
-        top: -150px;
-        right: 50px;
+        top: -300px;
       }
       button { 
         display: inline-block;
-        width: 62px; 
-        height: 92px; 
-        background-image: url("../image/next.png");
+        width: 648px; 
+        height: 198px; 
+        background-image: url("../image/03_button.png");
         background-color: transparent;
         border: none;
       }
@@ -40,26 +39,32 @@
   <body id="content">
     <audio id="audio" src="../audio/Btn_Click.mp3"></audio>
     <div class="video-box">
-      <video playsinline id="video_02">
+      <video playsinline id="video_03">
         <source src="../videos/02.webm" type="video/webm">
         <source src="../videos/02.mp4" type="video/mp4">
         <strong>Your browser does not support the video tag.</strong>
       </video>
-      <div class="button-box">
-        <button></button>
-      </div>
+    </div>
+    <div class="button-box">
+      <button id="next_btn"></button>
     </div>
     <button id="audio_btn"></button>
     <script>
-      let box; 
       let video;
 
       document.addEventListener('DOMContentLoaded', ()=>{
-        box = document.querySelector('.video-box');
-        video = document.querySelector('#video_02');
+        video = document.querySelector('#video_03');
         const audioBtn = document.querySelector('#audio_btn');
+        const nextBtn = document.querySelector('#next_btn');
+        
+        nextBtn.addEventListener('click', () => {
+          var audio = document.getElementById("audio");
+          audio.play();
 
-        box.addEventListener('click', chooseSide);
+          setTimeout(function() {
+            location.replace('03.html')
+          }, 500)
+        })
         
         audioBtn.addEventListener('click', () => {
           if (video.muted) {
@@ -95,28 +100,13 @@
           video.muted = true;
           video.play();
         })
-
+        
       });
 
-      function chooseSide(e){
-        var audio = document.getElementById("audio");
-        audio.play();
-
-        setTimeout(function() {
-          const {clientX, clientY} = e;
-          const {clientHeight, clientWidth} = box
-          if(clientX < (clientWidth/ 2)){
-            location.replace('../index.html')
-          } else{
-            location.replace('03.html')
-          }
-        }, 500)
-      }
-
       setTimeout(function() {
-          var buttonBox = document.querySelector(".button-box");
-          buttonBox.style.opacity = "1";
-        }, 4000);
+        var buttonBox = document.querySelector(".button-box");
+        buttonBox.style.opacity = "1";
+      }, 4000);
     </script>
   </body>
 </html>
